@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+    <head>
+
+    </head>
+    <body>
+        <form action="" method="post">
+            <label id="FLTIDLabel" style="width: 50px; display: inline-block;"></label>
+            <select id="FLTID" class="fname">
+                <option value="" disabled selected>航空便名を選択</option>
+                <option value="FLT01">FLT01</option>
+                <option value="FLT02">FLT02</option>
+                <option value="FLT03">FLT03</option>
+            </select>
+            <select id="FLT01" class="fdate">
+                <option value="" disabled selected>出発日を選択</option>
+                <option value="FLT01:2001/9/22">2001/9/22</option>
+                <option value="FLT01:2011/3/11">2011/3/11</option>
+            </select>
+            <select id="FLT02" class="fdate">
+                <option value="" disabled selected>出発日を選択</option>
+                <option value="FLT02:2005/6/22">2005/6/22</option>
+                <option value="FLT02:2014/4/11">2014/4/11</option>
+                <option value="FLT02:2014/4/12">2014/4/12</option>
+            </select>
+            <select id="FLT03" class="fdate">
+                <option value="" disabled selected>出発日を選択</option>
+                <option value="FLT03:2001/9/22">2001/9/22</option>
+            </select>
+            <select name="FLTID" id="FLT01:2001/9/22" class="ftime">
+                <option value="" disabled selected>出発時間を選択</option>
+                <option value="F0001">9:00</option>
+                <option value="F0002">11:00</option>
+            </select>
+            <select name="FLTID" id="FLT01:2011/3/11" class="ftime">
+                <option value="" disabled selected>出発時間を選択</option>
+                <option value="F0003">9:00</option>
+            </select>
+            <select name="FLTID" id="FLT02:2005/6/22" class="ftime">
+                <option value="" disabled selected>出発時間を選択</option>
+                <option value="F0004">12:30</option>
+            </select>
+            <select name="FLTID" id="FLT02:2014/4/11" class="ftime">
+                <option value="" disabled selected>出発時間を選択</option>
+                <option value="F0005">12:12</option>
+                <option value="F0006">16:16</option>
+            </select>
+            <select name="FLTID" id="FLT02:2014/4/12" class="ftime">
+                <option value="" disabled selected>出発時間を選択</option>
+                <option value="F0007">1:1</option>
+                <option value="F0008">2:2</option>
+            </select>
+            <select name="FLTID" id="FLT03:2001/9/22" class="ftime">
+                <option value="" disabled selected>出発時間を選択</option>
+                <option value="F0009">19:10</option>
+                <option value="F0010">23:25</option>
+            </select>
+        </form>
+        <script>
+            document.addEventListener('DOMContentLoaded', 
+                function() {
+                    var fdateSelect = document.getElementsByClassName("fdate");
+                    var ftimeSelect = document.getElementsByClassName("ftime");
+                    var fLabel = document.getElementById("FLTIDLabel");
+                    for(var i = 0; i< fdateSelect.length; i++)
+                    {
+                        fdateSelect[i].style.display = 'none';
+                        fdateSelect[i].onchange = function() {
+                            for(var i = 0; i< ftimeSelect.length; i++)
+                            {
+                                ftimeSelect[i].style.display = 'none';
+                                ftimeSelect[i].selectedIndex = 0;
+                            }
+                            if(this.value) {
+                                var ftimeS = document.getElementById(this.value);
+                                ftimeS.style.display = 'inline';
+                            }
+                        }
+                    }
+                    for(var i = 0; i< ftimeSelect.length; i++)
+                    {
+                        ftimeSelect[i].style.display = 'none';
+                        ftimeSelect[i].onchange = function() {
+                            fLabel.textContent = this.value;
+                        }
+                    }
+                    var fSelect = document.getElementById('FLTID');
+                    fSelect.onchange = function() {
+                        for(var i = 0; i< fdateSelect.length; i++)
+                        {
+                            fdateSelect[i].style.display = 'none';
+                            fdateSelect[i].selectedIndex = 0;
+                        }
+                        for(var i = 0; i< ftimeSelect.length; i++)
+                        {
+                            ftimeSelect[i].style.display = 'none';
+                            ftimeSelect[i].selectedIndex = 0;
+                        }
+                        if(this.value) {
+                            var fdateS = document.getElementById(this.value);
+                            fdateS.style.display = 'inline';
+                        }
+                    }
+                }
+            );
+        </script>
+    </body>
+</html>
