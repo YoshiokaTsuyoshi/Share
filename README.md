@@ -1,1 +1,1 @@
-https://yoshiokatsuyoshi.github.io/Share/multidrop.html
+https://yoshiokatsuyoshi.github.io/Share/multidrop
