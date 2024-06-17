@@ -1,6 +1,16 @@
 <!DOCTYPE html>
     <head>
-
+        <style>
+            #B{
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 1;
+                transition-duration: 1s;
+            }
+        </style>
     </head>
     <body>
         <form action="" method="post">
@@ -101,11 +111,16 @@
                         }
                     }
 
-                    var audio = document.querySelector('audio');
-                    audio.play();
+                    var button = document.getElementById('B');
+                    button.onclick = function() {
+                        this.style.opacity = 0;
+                        var audio = document.querySelector('audio');
+                        audio.play();
+                    }
                 }
             );
         </script>
+        <input id="B" type="button" value="Click Me!" />
         <audio src="./Python_WAV/test10.wav" autoplay></audio>
     </body>
 </html>
