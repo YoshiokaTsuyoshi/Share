@@ -114,8 +114,11 @@
                     var button = document.getElementById('B');
                     button.onclick = function() {
                         this.style.opacity = 0;
-                        var audio = document.querySelector('audio');
-                        audio.play();
+                        setTimeout(() => {
+                            this.style.display = 'none';
+                            var audio = document.querySelector('audio');
+                            audio.play();
+                        }, 1000);
                     }
                 }
             );
